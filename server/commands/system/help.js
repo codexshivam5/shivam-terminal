@@ -74,7 +74,7 @@ export function helpCommand(args = []) {
 --------------------------------------------------
 USAGE: resume ats <filename.pdf>
 DESC: Analyzes a PDF in the server/commands folder using rule-based scoring.
-      Includes Gemini AI feedback.`.trim();
+      Includes Groq AI feedback.`.trim();
     }
 
     return `

@@ -9,6 +9,7 @@ dotenv.config();
 
 const SERVER_START_TIME = Date.now();
 const app = express();
+//console.log("BOOT CHECK GROQ:", process.env.GROQ_API_KEY?.substring(0, 5));
 
 // Updated CORS to be more specific for your Vite frontend
 app.use(

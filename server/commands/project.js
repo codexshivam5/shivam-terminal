@@ -9,7 +9,7 @@ const projects = [
   },
   {
     name: "Terminal Portfolio (SHIVAM-OS)",
-    tech: "React, Node.js, Gemini 2.5 Flash API",
+    tech: "React, Node.js, Groq API",
     description:
       "An interactive, terminal-inspired OS portfolio with integrated ATS resume analysis and real-time system stats.",
     status: "In Development",
