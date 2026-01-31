@@ -13,7 +13,11 @@ const app = express();
 // Updated CORS to be more specific for your Vite frontend
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://shivam-terminal.vercel.app"],
+    origin: [
+      "http://localhost:5173",
+      "https://shivam-terminal.vercel.app",
+      "https://terminal.shivamxcodes.co.in",
+    ],
   }),
 );
 app.use(express.json());
