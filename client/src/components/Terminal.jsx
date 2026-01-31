@@ -264,9 +264,12 @@ const Terminal = () => {
       }
 
       try {
-        const res = await axios.post("http://localhost:5000/execute", {
-          command: fullCmd,
-        });
+        const res = await axios.post(
+          "https://shivam-terminal.onrender.com/execute",
+          {
+            command: fullCmd,
+          },
+        );
         if (res.data.output.startsWith("__OPEN__:")) {
           const id = res.data.output.split(":")[1];
           const urls = {
@@ -336,7 +339,7 @@ const Terminal = () => {
     formData.append("file", file);
 
     try {
-      await axios.post("http://localhost:5000/upload", formData);
+      await axios.post("https://shivam-terminal.onrender.com/upload", formData);
 
       // Progress Bar Simulation
       let progress = 0;
@@ -357,9 +360,12 @@ const Terminal = () => {
           clearInterval(scanInterval);
           // Fetch final results after animation
           setTimeout(async () => {
-            const res = await axios.post("http://localhost:5000/execute", {
-              command: `resume ats ${file.name}`,
-            });
+            const res = await axios.post(
+              "https://shivam-terminal.onrender.com/execute",
+              {
+                command: `resume ats ${file.name}`,
+              },
+            );
             setHistory((p) => [
               ...p,
               { type: "output", content: res.data.output },
