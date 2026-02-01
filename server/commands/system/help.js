@@ -1,17 +1,30 @@
 export function helpCommand(args = []) {
-  const command = args[0];
   if (
-  args[0]?.toLowerCase() === "resume" &&
-  args[1]?.toLowerCase() === "ats"
-) {
-  return `
+    args[0]?.toLowerCase() === "resume" &&
+    args[1]?.toLowerCase() === "ats"
+  ) {
+    return `
 📖 MANUAL ENTRY: RESUME ATS
 --------------------------------------------------
 USAGE: resume ats <filename.pdf>
 DESC: Analyzes a PDF using rule-based ATS scoring
       and includes Groq AI feedback.
 `.trim();
-}
+  }
+
+  // ✅ help resume (generic, single-word)
+  if (args[0]?.toLowerCase() === "resume" && !args[1]) {
+    return `
+📖 MANUAL ENTRY: RESUME
+--------------------------------------------------
+USAGE: resume ats <filename.pdf>
+DESC: Resume analysis and ATS scoring.
+TIP: Use 'help resume ats' for detailed usage.
+`.trim();
+  }
+  
+  const command = args[0];
+  
 
   // Manual Page Data Store
   const manual = {
