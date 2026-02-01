@@ -258,7 +258,7 @@ const Terminal = () => {
         return;
       }
 
-      if (fullCmd.startsWith("resume ats")) {
+      if (fullCmd.toLowerCase().startsWith("resume ats")) {
         fileInputRef.current.click();
         return;
       }
