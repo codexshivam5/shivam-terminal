@@ -32,6 +32,9 @@ app.post("/execute", async (req, res) => {
   try {
     // We pass the lastUploadedFile to the executor so the 'resume' command can use it
     const output = await executeCommand(command, lastUploadedFile);
+    if (typeof command === "string" && command.toLowerCase().startsWith("resume ats")) {
+      lastUploadedFile = null;
+    }
     res.json({ output });
   } catch (error) {
     console.error("EXECUTE COMMAND ERROR ↓↓↓");
