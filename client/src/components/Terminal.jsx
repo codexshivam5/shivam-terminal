@@ -268,6 +268,10 @@ const Terminal = () => {
           "https://shivam-terminal.onrender.com/execute",
           {
             command: fullCmd,
+            clientData:{
+              location: locationData.city,
+              temp: locationData.temp,
+            }
           },
         );
         if (res.data.output.startsWith("__OPEN__:")) {
