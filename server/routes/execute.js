@@ -90,7 +90,7 @@ const commandRegistry = {
  * @param {string} input
  * @param {Object|null} uploadedFile
  */
-export async function executeCommand(input, uploadedFile = null) {
+export async function executeCommand(input, uploadedFile = null, clientData= {}) {
   if (!input || !input.trim()) return "";
 
   const tokens = input.trim().split(/\s+/);
