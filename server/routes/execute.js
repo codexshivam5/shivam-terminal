@@ -104,7 +104,7 @@ export async function executeCommand(input, uploadedFile = null) {
   }
 
   try {
-    const result = await handler(args, uploadedFile);
+    const result = await handler(args, uploadedFile, clientData);
 
     if (result === "__CLEAR__") return "__CLEAR__";
     if (result === undefined || result === null) return "";
