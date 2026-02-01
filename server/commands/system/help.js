@@ -1,5 +1,17 @@
 export function helpCommand(args = []) {
   const command = args[0];
+  if (
+  args[0]?.toLowerCase() === "resume" &&
+  args[1]?.toLowerCase() === "ats"
+) {
+  return `
+📖 MANUAL ENTRY: RESUME ATS
+--------------------------------------------------
+USAGE: resume ats <filename.pdf>
+DESC: Analyzes a PDF using rule-based ATS scoring
+      and includes Groq AI feedback.
+`.trim();
+}
 
   // Manual Page Data Store
   const manual = {
@@ -79,6 +91,12 @@ DESC: Analyzes a PDF in the server/commands folder using rule-based scoring.
 
     return `
 📖 MANUAL ENTRY: ${command.toUpperCase()}
+
+
+// ⚠️ REDUNDANT LOGIC (kept intentionally)
+// This block is never reached for `help resume ats` because multi-word
+// commands are handled earlier in a case-insensitive manner.
+// Kept for backward compatibility / documentation clarity.
 --------------------------------------------------
 ${manual[command]}`.trim();
   }
