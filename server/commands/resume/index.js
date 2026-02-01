@@ -19,7 +19,7 @@ export async function resumeCommand(args, uploadedFile) {
   let buffer;
 
   // 1. Priority: Browser upload
-  if (uploadedFile && uploadedFile.originalname === filename) {
+  if (uploadedFile ) {
     buffer = uploadedFile.buffer;
   }
   // 2. Fallback: Local file resolution
