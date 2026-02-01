@@ -1,19 +1,21 @@
-import os from "os";
 
 export function sysinfoCommand() {
-  const freeMem = (os.freemem() / 1024 / 1024 / 1024).toFixed(2);
-  const totalMem = (os.totalmem() / 1024 / 1024 / 1024).toFixed(2);
-
   return `
 SYSTEM INFORMATION
 ------------------
-OS        : ${os.type()} ${os.release()}
-Platform  : ${os.platform()}
-Arch      : ${os.arch()}
-Memory    : ${freeMem}GB / ${totalMem}GB free
-Runtime   : Node.js ${process.version}
-Shell     : webtty-v1.0.2
-Interface : browser-cli-xterm
-Status    : ONLINE
+Terminal  : SHIVAM-OS v1.0.2 (Stable)
+Interface : browser-cli-xterm (WebTTY)
+Platform  : Distributed Web Environment
+Runtime   : Node.js ${process.version} (Server-Side)
+Status    : ONLINE (Connected via Render)
+Location  : Cloud-Edge (Global)
+
+[ ENVIRONMENT ]
+User      : guest@shivamxcodes
+Host      : shivam-terminal-backend
+Shell     : /usr/bin/web-zsh
+Uptime    : ${Math.floor(process.uptime() / 60)}m ${Math.floor(process.uptime() % 60)}s
+
+"Type 'help' to explore the system architecture."
 `.trim();
 }
