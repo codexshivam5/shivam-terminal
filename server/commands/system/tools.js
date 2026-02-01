@@ -81,11 +81,12 @@ export const tools = {
   },
 
   // 4. API DRIVEN TOOLS
-  weather: async (args) => {
-    const city = args[0] || "Amritsar";
+ weather: async (args, uploadedFile, clientData = {}) => {
+    // Priority: 1. User input city, 2. Auto-detected city from browser, 3. Fallback
+    const city = args[0] || clientData.location || "Amritsar";
     try {
-      // Using wttr.in for terminal-friendly weather formatting
-      const res = await axios.get(`https://api.wttr.in/${city}?format=3`);
+      // Added &m to force Celsius/Metric units
+      const res = await axios.get(`https://api.wttr.in/${city}?format=3&m`);
       return res.data;
     } catch {
       return "Error: Weather service unreachable.";
@@ -109,17 +110,21 @@ el, he, fa
 `.trim();
     }
 
-    const lang = args.pop();
+    const lang = args.pop().toLowerCase();
     const text = args.join(" ");
 
     try {
+      // Using autodetect|lang ensures it works even if input isn't perfect English
       const res = await axios.get(
         `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
           text,
-        )}&langpair=en|${lang}`,
+        )}&langpair=autodetect|${lang}`,
       );
 
-      return `Translation (${lang.toUpperCase()}): ${res.data.responseData.translatedText}`;
+      if (res.data && res.data.responseData) {
+        return `Translation (${lang.toUpperCase()}): ${res.data.responseData.translatedText}`;
+      }
+      return "Error: Could not retrieve translation.";
     } catch {
       return "Error: Translation failed.";
     }
