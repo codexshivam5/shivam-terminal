@@ -9,4 +9,5 @@ export const getBanner = () => `
  Welcome to Shivam's Terminal 
  ---------------------------------------
  Type '?' or 'help' to view a list of available commands.
+ [!] NOTE: First command may take ~1 minute to wake up the server.
 `;
